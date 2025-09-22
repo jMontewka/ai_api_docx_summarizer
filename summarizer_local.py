@@ -27,6 +27,7 @@ def summarize_and_save(input_file, output_file):
 
         # Define the prompt for the LLM
         prompt = f"""Summarize the following job listings in a concise manner.
+        List all the technologies mentioned in the listings with the number of times they appear and rank them accordingly.
         
         Job Listings:
         {job_listings}
