@@ -20,6 +20,12 @@ def read_job_listings(file_path):
         full_text.append(paragraph.text)
     return '\n'.join(full_text)
 
+def create_output_docx(summary, output_path):
+    doc = Document()
+    doc.add_heading('Job Listings Summary', 0)
+    doc.add_paragraph(summary)
+    doc.save(output_path)
+
 # Summarize the text using Ollama and save the summary to a new .docx file
 def summarize_and_save(input_file, output_file):
     try:
@@ -43,10 +49,7 @@ def summarize_and_save(input_file, output_file):
         print("Received summary from Gemini.")
         
         # Create a new Word document and save the summary
-        doc = Document()
-        doc.add_heading('Job Listings Summary', 0)
-        doc.add_paragraph(summary)
-        doc.save(output_file)
+        create_output_docx(summary, output_file)
         
         print(f"Successfully summarized and saved the result to '{output_file}'.")
 
