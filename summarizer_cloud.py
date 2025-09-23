@@ -1,29 +1,19 @@
-import ollama
 from docx import Document
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Read job listings from a .docx file
 def call_gemini_api(prompt):
-    # Call the cloud Gemini API for summarization
-    # Load environment variables from .env file
+    # Load gemini API key from .env file
     load_dotenv()
-    # Retrieve the API key from environment variables
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-    # Configure the API key
     genai.configure(api_key=GEMINI_API_KEY)
     # Choose the model to use
     model = genai.GenerativeModel('gemini-1.5-flash')
-
     response = model.generate_content(prompt)
     return response.text
 
-# Read job listings from a .docx file
 def read_job_listings(file_path):
-    """
-    Reads the content from a .docx file and returns it as a single string.
-    """
     doc = Document(file_path)
     full_text = []
     for paragraph in doc.paragraphs:
@@ -32,11 +22,7 @@ def read_job_listings(file_path):
 
 # Summarize the text using Ollama and save the summary to a new .docx file
 def summarize_and_save(input_file, output_file):
-    """
-    Summarizes job listings using the local Ollama LLM and saves the summary.
-    """
     try:
-        # Read the job listings from the input file
         job_listings = read_job_listings(input_file)
         
         if not job_listings.strip():
