@@ -37,12 +37,12 @@ def summarize_and_save(input_file, output_file):
 
         # Define the prompt for the LLM
         prompt = f"""Summarize the following job listings in a concise manner.
-        List all the technologies mentioned in the listings with the number of times they appear and rank them accordingly.
+        List all technologies mentioned, count occurrences, and rank them.
         
         Job Listings:
         {job_listings}
         """
-
+        
         print("Sending job listings to Gemini for summarization...")
         
         summary = call_gemini_api(prompt)
@@ -50,7 +50,6 @@ def summarize_and_save(input_file, output_file):
         
         # Create a new Word document and save the summary
         create_output_docx(summary, output_file)
-        
         print(f"Successfully summarized and saved the result to '{output_file}'.")
 
     except FileNotFoundError:
