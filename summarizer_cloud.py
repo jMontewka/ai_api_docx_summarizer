@@ -24,7 +24,7 @@ def read_job_listings(file_path):
 def summarize_and_save(input_file, output_file):
     try:
         job_listings = read_job_listings(input_file)
-        
+
         if not job_listings.strip():
             print("The input file is empty. Nothing to summarize.")
             return
