@@ -2,7 +2,7 @@
 
 A Python script to summarize job listings from a `.docx` file using either a local Ollama server or the Google Gemini API. The summary is saved to a new `.docx` file.
 
-Sample (AI generated) and Output (example with use of gemini-1.5-flash model) files provided. 
+Sample (AI generated) and Output (example with use of gemini-1.5-flash model) files provided.
 
 ---
 
