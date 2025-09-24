@@ -41,8 +41,14 @@ def summarize_and_save(input_file, output_file):
             return
 
         # Define the prompt for the LLM
-        prompt = f"""Summarize the following job listings in a concise manner.
-        List all the technologies mentioned in the listings with the number of times they appear and rank them accordingly.
+        prompt = f"""
+        Summarize the following job listings in a concise manner.
+        Make three lists : 
+        1. Of all skills
+        2. Of expected skills
+        3. Of nice-to-have skills 
+        Mentioned more than once. Count each category and rank them separately. 
+        Then provide the summary in a clear and structured format.
         
         Job Listings:
         {job_listings}
